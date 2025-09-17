@@ -1,0 +1,14 @@
+.footer {
+  background: linear-gradient(to top, #FFC2E8, #FFFFFF);
+  height: 100%;
+  position: relative;
+  bottom: 0px;
+}
+
+.font-color{
+  background:linear-gradient(to top, #763851, #DC6997);
+
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

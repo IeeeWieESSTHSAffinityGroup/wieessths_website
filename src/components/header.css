@@ -1,0 +1,301 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+    font-size: 1rem;
+  }
+  50% {
+    background-position: 100% 50%;
+    font-size: 1.5rem;
+  }
+  100% {
+    background-position: 0% 50%;
+    font-size: 1rem;
+  }
+}
+
+/* Create a utility class for animated gradient text */
+.animate-gradient {
+  background: linear-gradient(90deg, #3b82f6, #9333ea, #f43f5e);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 2s ease infinite;
+  font-size: 1rem; /* Default font size */
+  transition: font-size 0.2s ease; /* Smooth font-size transition */
+}
+
+.highlight {
+  font-size: 1.5rem; /* Larger font size when triggered */
+}
+
+/* styles.css or in a global CSS file */
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(4, 21, 50, 0.957); /* stroke width and color */
+  color: #CB618C; /* inner fill color */
+}
+
+/* .blurr{
+    height:100%;
+    z-index: -10;
+    width: 100%;
+    background-image: radial-gradient(closest-side,rgb(0, 128, 255),black);
+} */
+/* Ensure child elements are above the shadow */
+
+/* .background::before {
+  content: '';
+  position: absolute;
+  top: -0px; 
+  left: -0%;
+  right:-0%;
+  bottom: -0%;
+  background-image: url('../../public/bg.svg');
+  background-size:cover;
+  background-position:center;
+  background-repeat: no-repeat;
+
+  filter: blur(0px);
+width: 100%;
+ 
+  z-index: -10; 
+} */
+
+
+/* .background::after {
+  content: '';
+  position: absolute;
+  top: 0px; 
+  right: 0px;
+  bottom: -0%;
+  background-image: url('../../public/blurr.svg');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+
+
+  filter: blur(10px);
+
+ z-index: -10;
+} */
+.astro {
+  z-index: -20;
+}
+
+.background {
+  position: relative;
+  padding-bottom: 1rem;
+  z-index: 1; 
+  color: #CB618C;
+  background-color: rgba(190, 23, 23, 0);
+  height: fit-content;
+}
+
+
+.button_join {
+  width: 12rem;
+  height: 60px;
+  background-image: url('../../public/button.svg');
+  background-color: rgba(0, 0, 0, 0.541);
+  background-size: cover;
+  background-position: center;
+
+  background-repeat: repeat;
+  background-clip: padding-box;
+  border-radius: 5rem;
+  position: relative;
+  text-align: center;
+  padding: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  align-items: center;
+  align-content: center;
+}
+
+.button_join::before {
+  border-radius: 5rem;
+  content: '';
+  background-image: radial-gradient(circle at 100%, #4690d4 0%, #6ebff4 22%, #a5efff 100%);
+  top: -1px;
+  left: -1px;
+  bottom: -1px;
+  right: -1px;
+  position: absolute;
+  z-index: -1;
+}
+
+
+@media (width < 64rem /* 768px */) {
+  .background::before {
+    content: '';
+    position: absolute;
+    /* top: 0px; 
+    left: -0px;
+    right: -0px;
+    bottom: -50%; */
+        bottom: -0%;
+          left: -5px;
+    right: -0px;
+    background-image: url('../../public/blurrsm.svg');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    filter: blur(0px);
+   width: 100%;
+    z-index: -1;
+  } 
+
+   .background {
+    position: relative;
+    padding-bottom: 1rem;
+ 
+    color: white;
+    background-color: rgba(133, 27, 27, 0);
+    height: fit-content;
+  } 
+  .button_join {
+    width: 12rem;
+    height: 60px;
+
+  }
+
+
+}
+
+@media (width < 48rem /* 768px */) {
+  .background::before {
+    content: '';
+    position: absolute;
+    /* top: 0px;
+    left: -0px;
+    right: -0px;
+    bottom: -20px; */
+    background-image: url('../../public/blurrsm.svg');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    filter: blur(0px);
+
+    z-index: -1;
+  } 
+
+  /* .background {
+    position: relative;
+    padding-bottom: 1rem;
+    
+    color: white;
+    background-color: rgba(179, 255, 0, 0.801);
+    height: fit-content;
+  } */
+
+  .button_join {
+    width: 10rem;
+    height:50px;
+
+  }
+
+
+}
+@media (width < 500px /* 768px */) {
+  .background::before {
+    content: '';
+    position: absolute;
+    /* top: 0px; 
+    left: -0px;
+    right: -0px;
+    bottom: -20px; */
+    background-image: url('../../public/blurrsm.svg');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    filter: blur(0px);
+ 
+    z-index: -1;
+  } 
+/* 
+  .background {
+    position: relative;
+    padding-bottom: 1rem;
+
+    color: white;
+    background-color: rgba(0, 255, 251, 0.801);
+    height: fit-content;
+  } */
+
+  .button_join {
+    width: 10rem;
+    height: 50px;
+
+  }
+
+
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes gradientAnimationText {
+  0% {
+    background-position: 0% 100%;
+  }
+  25% {
+    background-position: 25% 60%;
+  }
+  50% {
+    background-position: 50% 50%;
+  }
+  75% {
+    background-position: 75% 40%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(
+    45deg,
+    rgb(90, 150, 235),
+    #0e6edb,
+    rgb(68, 144, 251),
+    #ffffff,
+    rgb(68, 144, 251),
+    #0e6edb,
+    rgb(90, 150, 235)
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimationText 5s linear infinite;
+  transition: font-size 0.2s ease;
+}
+
+.animated-title {
+  animation: fadeSlideUp 1.2s ease-out forwards;
+  opacity: 0; /* Ensures animation starts from hidden */
+}
+
+.fontheader {
+  font-family: wieFont;
+}
+
+svg:hover {
+  fill: red;
+}
