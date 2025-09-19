@@ -10,12 +10,13 @@ export default function WieTunisia() {
           IEEE ESSTHS Student Branch
         </h1>
         <div className="text-xl leading-10 max-sm:text-center md:text-right lg:text-right text-black">
-          The Aerospace and Electronic Systems Society (AESS) is a specialized society within the
-          IEEE, dedicated to advancing both the theory and application of aerospace and electronic
-          systems. Bringing together engineers, scientists, and professionals, AESS drives
-          innovation through high-impact conferences, respected journals, and technical
-          publications. The society also supports education and professional growth, providing a
-          global platform for knowledge exchange and collaboration in these critical fields.
+        IEEE ESSTHS Student Branch, founded in 2020, is home to more than
+							280 members, making it the largest Student Branch in Sousse, and
+							7th in Tunisia Section. It encompasses 5 Technical Chapters: AESS,
+							CS, IAS, PES, RAS, IES, and 2 Affinity Groups: SIGHT & WIE. We
+							have had the honor of receiving more than 12 worldwide IEEE Awards
+							across all fields through the dedication and commitment of each of
+							our members.
         </div>
       </div>
     </section>

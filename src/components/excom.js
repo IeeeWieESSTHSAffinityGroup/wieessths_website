@@ -22,6 +22,7 @@ export default function ExCom() {
             md:h-40
             max-sm:h-40
             w-full
+            text-white
 lg:h-90
 gap-4
             max-sm:gap-4  

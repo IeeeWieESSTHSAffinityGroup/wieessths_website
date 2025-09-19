@@ -20,11 +20,12 @@ export default function Header() {
         <header className=" flex flex-row max-lg:flex-wrap-reverse max-md:flex-wrap-reverse max-sm:flex-wrap sm:flex-wrap-reverse md:justify-center lg:flex-nowrap lg:justify-center lg:px-14">
           <div className=" lg:w-full flex flex-1 max-md:flex-row sm:flex-row sm:justify-start sm:p-2 md:justify-start  lg:flex-col lg:justify-between ">
             <div className="flex flex-1 flex-col sm:justify-center lg:w-full lg:justify-between gap-2">
-              <div className="flex gap-5 sm:item-center  max-sm:flex-row md:flex-1 md:flex-col lg:flex-1 lg:flex-col lg:justify-center">
+              <div className="flex gap-5 sm:item-center  md:flex-1 md:flex-col lg:flex-1 flex-col lg:justify-center">
                 {' '}
                 {/* Title */}
                 <div className=" sm:item-center flex flex-col max-sm:items-center max-sm:justify-end md:justify-center lg:flex-1 lg:justify-center">
-                  <span className=" animated-title z-5 text-5xl leading-40 max-md:text-center max-sm:mb-4 max-sm:w-full max-sm:text-2xl md:mb-4 md:text-center lg:text-center lg:mb-8 lg:text-9xl">
+                  <span className=" animated-title z-5  
+                  max-sm:leading-15 font-bold lg:leading-40 max-md:text-center max-sm:mb-4 max-sm:w-full max-sm:text-5xl md:mb-4 md:text-center lg:text-center lg:mb-8 lg:text-9xl">
                     <p className='fontheader font-color'>IEEE WIE ESSTHS AFFINITY GROUP</p>
                   </span>
                  {/* Solang +join us */}
@@ -36,10 +37,10 @@ export default function Header() {
                   </div>
                 </div>
                  {/* media icons */}
-                <div className="flex gap-2  lg:flex-row lg:justify-center lg:items-center md:flex-row md:justify-center  max-md:flex-col 
+                <div className="flex gap-2  lg:flex-row lg:justify-center lg:items-center flex-row md:justify-center  max-md:flex-col 
                 
         
-                max-md:justify-center max-sm:flex-1/7 max-sm:items-center max-sm:justify-end   sm:flex-col sm:justify-start ">
+                max-md:justify-center max-sm:flex-1/7 max-sm:items-center    sm:flex-col sm:justify-start ">
                 
 
                   <div className="relative flex flex-col items-center justify-center     ">

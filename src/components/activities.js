@@ -227,7 +227,7 @@ const Actvities = ({ loopedEvents }) => {
         </div>
         <div
           ref={scrollRef}
-          className="custom-scrollbar flex lg:flex-row max-lg:flex-row  md:flex-row  max-md:flex-col sm:flex-col max-sm:flex-col w-full justify-center space-x-3 self-center overflow-hidden scroll-smooth lg:p-3 sm:gap-5 max-sm:gap-5"
+          className="custom-scrollbar flex lg:flex-row max-lg:flex-row  md:flex-col  max-md:flex-col sm:flex-col max-sm:flex-col w-full justify-center space-x-3 self-center overflow-hidden scroll-smooth lg:p-3 sm:gap-4 max-sm:gap-5 "
           style={{
             scrollbarWidth: 'none',
             display: 'flex',
@@ -253,7 +253,7 @@ const Actvities = ({ loopedEvents }) => {
                   <h3 className="fontBold text-lg text-gray-900 dark:text-white max-sm:text-xs">
                     {event['Event Title']}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 max-sm:text-xs">{event['desrip']}</p>
+                  <p className="text-gray-600 dark:text-gray-300 max-sm:text-xs">{event['desrip']?.slice(0, 200) }{event['desrip']?.length > 50 && "..."}</p>
                 </div>
               </div>
             );
