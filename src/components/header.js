@@ -31,7 +31,7 @@ export default function Header() {
                  {/* Solang +join us */}
                   <div className="flex max-sm:flex-col-reverse max-sm:items-center max-sm:justify-center sm:flex-col-reverse lg:justify-between">
                
-                    <div className=" font-light text-black max-sm:w-full max-sm:text-center max-sm:text-sm sm:text-center sm:text-xs lg:mb-5 lg:text-center lg:text-2xl lg:leading-10 lg:w-full">
+                    <div className=" font-light text-black max-sm:w-full max-sm:text-center max-sm:text-sm sm:text-center max-sm:px-10 sm:px-10 sm:text-xs lg:mb-5 lg:text-center lg:text-2xl lg:leading-10 lg:w-full">
                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
                     </div>
                   </div>

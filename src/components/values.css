@@ -1,12 +1,12 @@
 
 
-.box {
+/* .box {
   position: relative;
    background: linear-gradient(to  bottom, #DC0089, #FF68A4);
       box-shadow: -9px 9px 0px 0px rgba(0, 0, 0, 0.15);
         position: relative;
   z-index: 0; 
-}
+} */
 /* .box::before {
   content: '';
   position: absolute;
@@ -22,6 +22,9 @@
 
 .cardact {
   background: linear-gradient(to top, #FF68A4, #FFC2E8);
+  box-shadow: -9px 9px 0px 0px rgba(0, 0, 0, 0.15);
+        position: relative;
+  z-index: 0; 
 }
 /* 
 .button_join {

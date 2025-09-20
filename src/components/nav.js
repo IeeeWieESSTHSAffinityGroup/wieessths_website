@@ -62,12 +62,12 @@ export default function Navigation() {
           </div>
 
           <div className="w-full rounded-2xl max-lg:hidden max-md:hidden max-sm:block sm:block md:hidden">
-            <div className="flex w-full gap-2">
-              <div className="bg-white  border-[#CB618C] border-2 flex w-full justify-between rounded-4xl p-2">
-                <div className="w-40">
+            <div className="flex w-full gap-2 max-sm:px-4">
+              <div className="bg-white items-center  border-[#CB618C] border-2 flex w-full justify-between rounded-4xl p-2">
+                <div className="max-lg:w-40 h-10 sm:w-30 max-sm:w-20 ">
                   <div
                     className="flex items-center"
-                    style={{ position: 'relative', width: '100%', height: '2rem' }}
+                    style={{ position: 'relative', width: '100%', height: '100%' }}
                   >
                     <a to="/">
                       <Image
@@ -81,9 +81,9 @@ export default function Navigation() {
                     </a>
                   </div>
                 </div>
-                <div className="relative h-5 w-20">
+                <div className="relative h-4 w-10 flex items-center justify-center ">
                   <div
-                    className="flex items-center justify-center"
+                    className="flex items-center justify-center "
                     style={{ position: 'relative', width: '100%', height: '100%' }}
                   >
                     <div className="menu z-10 p-4" onClick={() => setIsMenuOpen(!isMenuOpen)}>

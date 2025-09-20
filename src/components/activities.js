@@ -23,9 +23,9 @@ export default function UpEvents({ chapter }) {
   ];
 
   return (
-    <>
+    <section>
       <Actvities loopedEvents={loopedEvents} />
-    </>
+    </section>
   );
 }
 
@@ -180,9 +180,10 @@ const Actvities = ({ loopedEvents }) => {
   };
 
   return (
-    <div id="activities" className="flex w-full flex-col items-center lg:py-10 gap-10 max-sm:p-0 sm:p-0 ">
-     <div className="flex flex-col content-center items-center gap-2 max-sm:p-0 sm:p-0 lg:px-14">
-          <h2 className="font-color fontheader text-6xl text-center">Latest Activities</h2>
+    <section id="activities">
+    <div className="flex w-full flex-col items-center lg:py-10  lg:gap-10 max-sm:p-0  max-sm:gap-5 ">
+     <div className="flex flex-col content-center items-center gap-2 max-sm:p-0  lg:px-14">
+          <h2 className="fontheader  font-color lg:mb-7 sm:mb-0 max-sm:mb-0 text-right lg:text-6xl md:text-4xl sm:text-5xl   max-sm:text-2xl max-sm:font-bold">Latest Activities</h2>
        <p className='text-black'>Fields Taht We tackle within our activities</p>
         </div>
    
@@ -227,7 +228,7 @@ const Actvities = ({ loopedEvents }) => {
         </div>
         <div
           ref={scrollRef}
-          className="custom-scrollbar flex lg:flex-row max-lg:flex-row  md:flex-col  max-md:flex-col sm:flex-col max-sm:flex-col w-full justify-center space-x-3 self-center overflow-hidden scroll-smooth lg:p-3 sm:gap-4 max-sm:gap-5 "
+          className="custom-scrollbar flex lg:flex-row max-lg:flex-row  md:flex-col  max-md:flex-col sm:flex-col max-sm:flex-col w-full justify-center space-x-3 self-center overflow-hidden scroll-smooth lg:p-3 max-sm:p-2 sm:gap-4 max-sm:gap-5 "
           style={{
             scrollbarWidth: 'none',
             display: 'flex',
@@ -240,20 +241,23 @@ const Actvities = ({ loopedEvents }) => {
             return (
               <div
                 key={event['Event Title'] + idx}
-                className="cardact box flex  min-w-[15rem] md:flex-col max-md:flex-col max-sm:flex-row  sm:flex-row justify-between rounded-xl lg:p-6 sm:p-4  max-sm:p-1 text-left shadow-lg sm:w-full max-sm:w-full gap-2 "
+                className="cardact box flex   md:flex-col max-md:flex-col max-sm:flex-row  sm:flex-row justify-between rounded-xl lg:p-6 sm:p-4  max-sm:p-2 text-left shadow-lg sm:w-full max-sm:w-full gap-2 max-sm:h-40  "
               >
-                <div className="lg:w-full flex justify-center items-center">
+                <div className="lg:w-full flex flex-3/5  justify-center items-center">
                   <img
                     src={event['Event_image']}
                     alt=""
                     className="shadow-black-600 h-auto w-full rounded-xl shadow-lg"
                   />
                 </div>
-                <div className="flex flex-col justify-center gap-2 sm:w-[50%] max-sm:w-[70%] lg:w-full">
+                <div className="flex flex-col flex-3/5  justify-center gap-2 lg:w-full">
                   <h3 className="fontBold text-lg text-gray-900 dark:text-white max-sm:text-xs">
                     {event['Event Title']}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 max-sm:text-xs">{event['desrip']?.slice(0, 200) }{event['desrip']?.length > 50 && "..."}</p>
+                 <p className="text-gray-600 dark:text-gray-300 max-sm:text-xs line-clamp-2 max-sm:line-clamp-1">
+  {event['desrip']}
+</p>
+
                 </div>
               </div>
             );
@@ -272,5 +276,6 @@ const Actvities = ({ loopedEvents }) => {
         }
       `}</style>
     </div>
+    </section>
   );
 };

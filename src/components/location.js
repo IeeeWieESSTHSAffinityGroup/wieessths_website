@@ -14,7 +14,7 @@ export function ContactForm({ title = 'Contact us' }) {
       {/* Google Maps Section */}
       <section className="md:py-12">
         <div className="flex flex-col items-center justify-center">
-          <h1 className="font-color fontheader text-6xl mb-4 text-center  sm:text-3xl lg:mb-7 lg:text-start lg:text-5xl lg:leading-full">
+          <h1 className="fontheader  font-color lg:mb-7 text-center lg:text-6xl md:text-4xl sm:text-5xl py-10  max-sm:text-2xl max-sm:font-bold lg:leading-full">
             We Are Located At ESSTHS University !
           </h1>
           <iframe

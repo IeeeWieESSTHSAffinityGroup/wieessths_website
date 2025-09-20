@@ -5,7 +5,7 @@ export default function Values() {
     <section id="value">
       <div className="flex flex-col content-center items-center gap-10 max-sm:p-0 sm:p-0 lg:px-14">
         <div className="flex flex-col content-center items-center gap-2 max-sm:p-0 sm:p-0 lg:px-14">
-          <h2 className="font-color fontheader text-6xl text-center">Domains</h2>
+          <h2 className="fontheader  font-color lg:mb-7 text-right lg:text-6xl md:text-4xl sm:text-5xl   max-sm:text-2xl max-sm:font-bold">Domains</h2>
           <p className='text-black'>Fields Taht We tackle within our activities</p>
         </div>
 

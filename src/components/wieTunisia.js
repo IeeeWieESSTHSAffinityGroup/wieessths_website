@@ -1,15 +1,16 @@
+import Image from 'next/image';
+import essths from "../../public/ieee_essths.png"
+
 export default function WieTunisia() {
   return (
-    <section className="align-center grid items-center py-14 max-sm:grid-cols-8 max-sm:px-0 sm:px-0 md:grid-cols-8 lg:grid-cols-16 lg:px-12">
-      <div className="flex h-full w-full content-center items-center justify-center max-sm:order-2 max-sm:col-span-8 sm:order-2 sm:col-span-8 lg:order-1 lg:col-span-6">
-        <img className="items-center justify-center" src="AESS.png" alt="TSYP 11" loading="lazy" />
-      </div>
-      <div className="col-span-1"></div>
-      <div className="col-span-8 flex flex-col gap-4 py-2 max-sm:order-1 max-sm:col-span-8 sm:order-1 lg:order-2">
-        <h1 className="fontheader  font-color text-5xl max-sm:text-center md:text-center lg:text-right lg:text-6xl">
+       <div id="about" className="md:px-20 sm:px-10 lg:px-40 max-sm:py-10 py-40 pb-0 flex flex-col items-center justify-center  ">
+    <section className="  align-center flex items-center max-md:text-center max-sm:text-center sm:text-center  md:text-center lg:justify-center w-full max-md:w-100 max-sm:w-100 ">
+   
+      <div className=" flex flex-col gap-4 py-2 max-sm:order-1  sm:order-1 lg:order-2">
+        <h1 className="fontheader  font-color lg:mb-7 text-right lg:text-6xl md:text-4xl sm:text-5xl   max-sm:text-sm">
           IEEE ESSTHS Student Branch
         </h1>
-        <div className="text-xl leading-10 max-sm:text-center md:text-right lg:text-right text-black">
+     <h1 className="lg:text-xl md:text-md max-sm:text-xs text-black font-light  text-end lg:font-normal">
         IEEE ESSTHS Student Branch, founded in 2020, is home to more than
 							280 members, making it the largest Student Branch in Sousse, and
 							7th in Tunisia Section. It encompasses 5 Technical Chapters: AESS,
@@ -17,8 +18,30 @@ export default function WieTunisia() {
 							have had the honor of receiving more than 12 worldwide IEEE Awards
 							across all fields through the dedication and commitment of each of
 							our members.
-        </div>
+      </h1>
+        
+
       </div>
+          <div className="  flex items-center justify-center">
+                <div className="relative lg:h-120 lg:w-100 md:h-100 md:w-50 sm:w-50 sm:h-60 max-sm:w-20 max-sm:h-60 max-md:w-50 max-md:h-60 flex items-center justify-center">
+                                <div
+                                  className="flex items-center justify-center"
+                                  style={{ position: 'relative', width: '100%', height: '100%' }}
+                                >
+                             
+                                    <Image
+                                      src={essths}
+                                      loading="lazy"
+                                      alt="menu"
+                                      layout="fill"
+                                      objectFit="contain"
+                                    />
+                                  
+                                </div>
+                              </div>
+          </div>
+       
     </section>
+    </div>
   );
 }

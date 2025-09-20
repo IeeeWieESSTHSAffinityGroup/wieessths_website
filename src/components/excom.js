@@ -4,7 +4,7 @@ export default function ExCom() {
   return (
     <div className="mx-auto flex w-full flex-1 flex-col items-center md:justify-center gap-10 md:px-10 lg:px-12">
       <div className="flex flex-col content-center items-center gap-2 max-sm:p-0 sm:p-0 lg:px-14">
-          <h2 className="font-color fontheader text-6xl">Team</h2>
+          <h2 className="fontheader  font-color lg:mb-7 text-right lg:text-6xl md:text-4xl sm:text-5xl   max-sm:text-2xl max-sm:font-bold">Team</h2>
        <p className='text-black'>Fields Taht We tackle within our activities</p>
         </div>
       <div className="grid w-full max-lg:grid-cols-4 max-md:grid-cols-1 max-sm:grid-cols-6 max-sm:gap-4 sm:grid-cols-9 sm:gap-4 md:grid-cols-4 md:gap-4 lg:grid-cols-4 lg:gap-10

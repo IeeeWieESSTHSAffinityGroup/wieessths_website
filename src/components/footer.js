@@ -10,10 +10,10 @@ import logo from '../../public/logo.png';
 export default function Footer() {
   return (
     <>
-      <div className="footer py-10 pb-0 flex flex-col max-md:justify-end max-md:px-10 max-sm:px-10 sm:px-10 md:px-10 lg:justify-between lg:px-16 lg:py-8">
-        <div className="item-center flex w-full max-sm:flex-col sm:flex-col sm:justify-center sm:gap-5 md:justify-center lg:flex-row lg:justify-between">
+      <div className="footer py-10 pb-0 flex flex-col max-md:justify-end max-md:px-10 max-sm:px-4 sm:px-10 md:px-10 lg:justify-between lg:px-16 lg:py-8">
+        <div className="item-center flex w-full max-sm:flex-col sm:flex-col sm:justify-center sm:gap-5 max-sm:gap-5 md:justify-center lg:flex-row lg:justify-between max-sm:gap-5">
           <div className="flex flex-col items-center sm:justify-center md:justify-center lg:justify-start">
-            <div className="flex w-50 flex-col items-center max-sm:h-40 sm:h-40 md:h-40">
+            <div className="flex lg:gap-5 w-50 flex-col items-center max-sm:h-40 sm:h-40 md:h-40 max-sm:gap-2">
               <div className="relative h-30 w-50">
                 <div
                   className="flex items-center justify-center"
@@ -82,10 +82,11 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="flex flex-row max-md:justify-between max-sm:w-full max-sm:justify-between sm:w-full sm:justify-between lg:flex-1 lg:justify-evenly lg:gap-5 font-color" >
-            <div className="flex flex-col justify-between gap-5">
+          <div className="flex flex-row max-md:justify-between max-sm:w-full max-sm:justify-between sm:w-full sm:justify-between lg:flex-1  lg:justify-evenly lg:gap-5 font-color " >
+           <div className="flex   w-full max-sm:item-center  max-sm:justify-center gap-5 ">
+            <div className="flex w-fit  max-sm:justify-center flex-col justify-between gap-5 text-left">
               <div>
-                <a href="#home" className="cursor-pointer font-color">
+                <a href="#home" className="cursor-pointer font-color text-left">
                   Home
                 </a>
               </div>
@@ -105,57 +106,63 @@ export default function Footer() {
                 </a>
               </div>
               <div>
-                <a href="#drone" className="cursor-pointer">
-                  Drone
-                </a>{' '}
-                Project
-              </div>
-              <div>
                 <a href="#faq" className="cursor-pointer">
                   FAQ
                 </a>
               </div>
             </div>
-
-            <div className="flex flex-col justify-start gap-5">
+</div>
+            <div className="flex flex-col  justify-start  gap-5 max-sm:w-[70%] ">
               <div>Contact</div>
-              <div className="flex flex-row">
+              <div className="flex flex-row items-center">
+              <div className="relative h-12 w-20 max-sm:h-10 max-sm:w-10">
                 <Image
                   className="rounded-full bg-none p-2"
                   src={location}
                   loading="lazy"
-                  width={30}
-                  height={10}
-                  alt="location"
+                   layout="fill"
+                      objectFit="contain"
+                      alt='location'
                 />
+              </div>
+                
                 ESSTHS University - Sousse , Tunisia
               </div>
-              <div className="flex flex-row">
-                <Image
-                  alt="email"
-                  className="rounded-full bg-none p-2"
-                  src={email}
-                  loading="lazy"
-                  width={30}
-                  height={10}
-                />
-                ieee.aess.essths.sbc@gmail.com
-              </div>
-              <div className="flex flex-row">
-                <Image
+          <div className="flex  items-center ">
+  <div className="relative h-12 w-20 max-sm:h-10 max-sm:w-10">
+    <Image
+      alt="email"
+      className="rounded-full bg-none p-2"
+      src={email}
+      loading="lazy"
+      layout="fill"
+      objectFit="contain"
+    />
+  </div>
+  <span className="text-sm text-gray-700 dark:text-gray-300  ">
+    ieee.wie.essths.sbc@gmail.com
+  </span>
+</div>
+
+              <div className="flex flex-row items-center ">
+               <div className="relative h-12 w-20 max-sm:h-10 max-sm:w-10">
+                  <Image
                   className="rounded-full bg-none p-2"
                   src={phone}
                   loading="lazy"
                   alt="phone"
-                  width={30}
-                  height={10}
+               layout="fill"
+                      objectFit="contain"
+                     
                 />
+               </div>
+              
                 +216 - 99 999 999
               </div>
             </div>
           </div>
         </div>
-        <div className="item-center text-center font-color">2025 © All Rights Reserved</div>
+        <div className="item-center text-center font-color pt-5">2025 © All Rights Reserved</div>
       </div>
     </>
   );
