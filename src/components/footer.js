@@ -47,7 +47,7 @@ export default function Footer() {
                 <div className="relative h-5">
                   {' '}
                   <HoverIcon
-                    objectfit="lg:p-2 md:p-4 max-sm:p-2 sm:p-1"
+                    objectfit="lg:p-2 md:p-2 max-sm:p-2 sm:p-1"
                     className="flex cursor-pointer items-center justify-center rounded-full border-1 border-[#CA608A] p-5 hover:bg-[#CA608A]"
                     href="https://www.facebook.com/profile.php?id=100068599066993"
                     src="Facebook.svg"
@@ -59,7 +59,7 @@ export default function Footer() {
                 <div className="relative h-5">
                   {' '}
                   <HoverIcon
-                    objectfit="lg:p-2 md:p-4 max-sm:p-2 sm:p-1"
+                    objectfit="lg:p-2 md:p-2 max-sm:p-2 sm:p-1"
                     className="flex cursor-pointer items-center justify-center rounded-full border-1 border-[#CA608A] p-5 hover:bg-[#CA608A]"
                     href="https://www.instagram.com/ieee.aess.essths/"
                     src="Instagram.svg"
@@ -82,8 +82,8 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="flex flex-row max-md:justify-between max-sm:w-full max-sm:justify-between sm:w-full sm:justify-between lg:flex-1  lg:justify-evenly lg:gap-5 font-color " >
-           <div className="flex   w-full max-sm:item-center  max-sm:justify-center gap-5 ">
+          <div className="flex flex-row max-md:justify-center max-sm:w-full max-sm:justify-between sm:w-full sm:justify-between lg:flex-1  lg:justify-evenly lg:gap-5 font-color " >
+           <div className="flex lg:justify-end   max-lg:w-full max-sm:item-center  max-sm:justify-center gap-5 md:justify-start  lg:flex-1 ">
             <div className="flex w-fit  max-sm:justify-center flex-col justify-between gap-5 text-left">
               <div>
                 <a href="#home" className="cursor-pointer font-color text-left">

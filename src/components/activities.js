@@ -1,184 +1,163 @@
 'use client';
 import React, { useEffect, Suspense, useRef, useState, useCallback } from 'react';
+import { motion } from "framer-motion";
 import './values.css';
 
 export default function UpEvents({ chapter }) {
-  if (chapter.length === 0) return null;
+  const [selectedEvent, setSelectedEvent] = useState(null);
+	const [expanded, setExpanded] = useState(false);
 
-  if (chapter.length === 0) return null;
+	if (chapter.length === 0) return null;
 
-  const sortedEvents = [...chapter]
-    .filter((event) => event['Event Date'])
-    .map((event) => ({
-      ...event,
-      parsedDate: new Date(event['Event Date']),
-    }))
-    .sort((a, b) => b.parsedDate - a.parsedDate);
+	if (chapter.length === 0) return null;
 
-  const loopedEvents = [
-    sortedEvents[sortedEvents.length - 1],
-    ...sortedEvents,
-    sortedEvents[0],
-    sortedEvents[1],
-  ];
+	const sortedEvents = [...chapter]
+		.filter((event) => event["Event Date"])
+		.map((event) => ({
+			...event,
+			parsedDate: new Date(event["Event Date"]),
+		}))
+		.sort((a, b) => b.parsedDate - a.parsedDate);
+
+	const loopedEvents = [
+		sortedEvents[sortedEvents.length - 1],
+		...sortedEvents,
+		sortedEvents[0],
+		sortedEvents[1],
+	];
 
   return (
-    <section>
-      <Actvities loopedEvents={loopedEvents} />
+    <>
+      {selectedEvent && (
+				<div className="fixed inset-0 z-50 flex h-full w-full items-center justify-center  backdrop-blur-xl bg-opacity-50 ">
+					<div
+						className="absolute inset-0"
+						onClick={() => setSelectedEvent(null)}
+					></div>
+					<motion.div
+						initial={{ opacity: 0, scale: 0.95 }}
+						animate={{ opacity: 1, scale: 1 }}
+						transition={{ duration: 0.3 }}
+						className="relative z-50 mx-4 max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-lg bg-white p-4 text-center shadow-xl dark:bg-gray-900 sm:p-6"
+					>
+						<button
+							onClick={() => setSelectedEvent(null)}
+							className="absolute right-2 top-2 text-2xl font-bold text-gray-500 hover:text-gray-800 dark:hover:text-gray-300 sm:text-3xl cursor-pointer"
+						>
+							×
+						</button>
+
+						<div className="flex flex-col items-center gap-2">
+							{/* Image */}
+							{selectedEvent["Event_pdp"] && (
+								<img
+									src={selectedEvent["Event_pdp"]}
+									alt=""
+									className="max-h-[20rem] w-full rounded-md object-cover sm:max-h-[20rem]"
+									loading="lazy"
+								/>
+							)}
+
+							{/* Title */}
+							<h2 className="text-center text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
+								{selectedEvent["Event Title"]}
+							</h2>
+
+							{/* Date and state */}
+							<p className="text-sm text-gray-600 dark:text-gray-300 sm:text-base">
+								{selectedEvent.parsedDate.toDateString()} – This activity is{" "}
+								<span className="font-medium">{selectedEvent.State}</span>
+							</p>
+
+							{/* Description */}
+						<div className="px-2 text-sm text-gray-700 dark:text-gray-200 sm:px-4 sm:text-base text-left w-full">
+					<div
+	className={`transition-all duration-300 ${
+		expanded ? "max-h-[50vh] overflow-y-auto custom-scrollbar" : "line-clamp-4"
+	}`}
+>
+	{selectedEvent["desrip"]}
+</div>
+
+						{/* Read More Button */}
+						{selectedEvent["desrip"]?.length > 200 && (
+							<button
+								onClick={() => setExpanded(!expanded)}
+								className=" text-sm font-medium text-grey-600 hover:underline dark:text-blue-400 cursor-pointer"
+							>
+								{expanded ? "Show less" : "Read more"}
+							</button>
+						)}
+					</div>
+
+							{/* Button */}
+							<a
+								href={selectedEvent["Event_link"]}
+								target="_blank"
+								rel="noreferrer"
+								className=" inline-block  rounded-lg  px-6 py-3 font-medium text-white transition button sm:w-auto"
+							>
+								View Event
+							</a>
+						</div>
+					</motion.div>
+				</div>
+			)}
+       <section>
+      <Actvities onExtend={setSelectedEvent} loopedEvents={loopedEvents} />
     </section>
+    </>
+   
   );
 }
 
-const Actvities = ({ loopedEvents }) => {
+const Actvities = ({ loopedEvents, onExtend  }) => {
   const scrollRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userInteracted, setUserInteracted] = useState(false);
   const userScrollTimeoutRef = useRef(null);
 
-  // Touch handling state
-  const touchStartRef = useRef({ x: 0, y: 0 });
-  const touchThreshold = 50; // Minimum swipe distance
 
-  const lastScrollTimeRef = useRef(0);
+	const goToPrevious = useCallback(() => {
+		setCurrentIndex(
+			(prev) => (prev - 1 + loopedEvents.length) % loopedEvents.length
+		);
+		setUserInteracted(true);
+		if (userScrollTimeoutRef.current)
+			clearTimeout(userScrollTimeoutRef.current);
+		userScrollTimeoutRef.current = setTimeout(
+			() => setUserInteracted(false),
+			2000
+		);
+	}, [loopedEvents.length]);
 
-  const handleUserScroll = useCallback(
-    (e) => {
-      const now = Date.now();
-      if (now - lastScrollTimeRef.current < 1000) return; // 1s debounce
-      lastScrollTimeRef.current = now;
+	const goToNext = useCallback(() => {
+		setCurrentIndex((prev) => (prev + 1) % loopedEvents.length);
+		setUserInteracted(true);
+		if (userScrollTimeoutRef.current)
+			clearTimeout(userScrollTimeoutRef.current);
+		userScrollTimeoutRef.current = setTimeout(
+			() => setUserInteracted(false),
+			2000
+		);
+	}, [loopedEvents.length]);
 
-      if (!userInteracted) setUserInteracted(true);
-      if (userScrollTimeoutRef.current) clearTimeout(userScrollTimeoutRef.current);
+	// Auto-play
+	useEffect(() => {
+		if (userInteracted) return;
+		const interval = setInterval(goToNext, 2000);
+		return () => clearInterval(interval);
+	}, [userInteracted, goToNext]);
 
-      const deltaY = e.deltaY;
+	const prevIndex =
+		(currentIndex - 1 + loopedEvents.length) % loopedEvents.length;
+	const nextIndex = (currentIndex + 1) % loopedEvents.length;
 
-      if (deltaY > 0) {
-        setCurrentIndex((prev) => (prev + 1) % loopedEvents.length);
-      } else if (deltaY < 0) {
-        setCurrentIndex((prev) => (prev - 1 + loopedEvents.length) % loopedEvents.length);
-      }
-
-      userScrollTimeoutRef.current = setTimeout(() => {
-        setUserInteracted(false);
-      }, 1000);
-    },
-    [userInteracted, loopedEvents.length],
-  );
-
-  // Touch event handlers
-  const handleTouchStart = useCallback((e) => {
-    const touch = e.touches[0];
-    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
-  }, []);
-
-  const handleTouchEnd = useCallback(
-    (e) => {
-      const touch = e.changedTouches[0];
-      const deltaX = touch.clientX - touchStartRef.current.x;
-      const deltaY = touch.clientY - touchStartRef.current.y;
-
-      // Determine if it's a horizontal swipe (more horizontal than vertical movement)
-      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > touchThreshold) {
-        e.preventDefault();
-
-        if (!userInteracted) setUserInteracted(true);
-
-        // Clear existing timeouts
-        if (userScrollTimeoutRef.current) clearTimeout(userScrollTimeoutRef.current);
-
-        if (deltaX > 0) {
-          // Swiping right - go to previous element
-          setCurrentIndex((prev) => (prev - 1 + loopedEvents.length) % loopedEvents.length);
-        } else {
-          // Swiping left - go to next element
-          setCurrentIndex((prev) => (prev + 1) % loopedEvents.length);
-        }
-
-        // Resume auto-scroll after 3 seconds of no interaction
-        userScrollTimeoutRef.current = setTimeout(() => {
-          setUserInteracted(false);
-        }, 3000);
-      }
-    },
-    [userInteracted, loopedEvents.length, touchThreshold],
-  );
-
-  // Auto-scroll effect
-  // useEffect(() => {
-  //   if (userInteracted) return;
-
-  //   const interval = setInterval(() => {
-  //     setCurrentIndex((prev) => (prev + 1) % loopedEvents.length);
-  //   }, 3000);
-
-  //   return () => clearInterval(interval);
-  // }, [userInteracted, loopedEvents.length]);
-
-  // // Add wheel event listeners (desktop only)
-  // useEffect(() => {
-  //   const container = scrollRef.current;
-  //   if (!container) return;
-
-  //   //   // Mouse wheel events for desktop
-  //   container.addEventListener('wheel', handleUserScroll, { passive: true });
-
-  //   return () => {
-  //     container.removeEventListener('wheel', handleUserScroll);
-  //   };
-  // }, [handleUserScroll]);
-
-  // useEffect(() => {
-  //   if (!scrollRef.current) return;
-  //   const container = scrollRef.current;
-
-  //   //   // For 2 or fewer elements, don't center
-  //   if (loopedEvents.length <= 2) return;
-
-  //   const selectedElement = container.children[1]; // Middle element
-  //   if (!selectedElement) return;
-
-  //   const containerCenter = container.offsetWidth / 2;
-  //   const elementCenter = selectedElement.offsetLeft + selectedElement.offsetWidth / 2;
-
-  //   container.scrollTo({
-  //     left: elementCenter - containerCenter,
-  //     behavior: 'smooth',
-  //   });
-  // }, [currentIndex, loopedEvents.length]);
-
-  // Get prev, current, next indexes cyclically
-  const prevIndex = (currentIndex - 1 + loopedEvents.length) % loopedEvents.length;
-  const nextIndex = (currentIndex + 1) % loopedEvents.length;
-
-  const displayedEvents = [
-    loopedEvents[prevIndex],
-    loopedEvents[currentIndex],
-    loopedEvents[nextIndex],
-  ];
-
-  // Navigation functions for arrows
-  const goToPrevious = () => {
-    if (!userInteracted) setUserInteracted(true);
-    if (userScrollTimeoutRef.current) clearTimeout(userScrollTimeoutRef.current);
-
-    setCurrentIndex((prev) => (prev - 1 + loopedEvents.length) % loopedEvents.length);
-
-    userScrollTimeoutRef.current = setTimeout(() => {
-      setUserInteracted(false);
-    }, 3000);
-  };
-
-  const goToNext = () => {
-    if (!userInteracted) setUserInteracted(true);
-    if (userScrollTimeoutRef.current) clearTimeout(userScrollTimeoutRef.current);
-
-    setCurrentIndex((prev) => (prev + 1) % loopedEvents.length);
-
-    userScrollTimeoutRef.current = setTimeout(() => {
-      setUserInteracted(false);
-    }, 3000);
-  };
-
+	const displayedEvents = [
+		loopedEvents[prevIndex],
+		loopedEvents[currentIndex],
+		loopedEvents[nextIndex],
+	];
   return (
     <section id="activities">
     <div className="flex w-full flex-col items-center lg:py-10  lg:gap-10 max-sm:p-0  max-sm:gap-5 ">
@@ -227,39 +206,50 @@ const Actvities = ({ loopedEvents }) => {
         </button>
         </div>
         <div
-          ref={scrollRef}
-          className="custom-scrollbar flex lg:flex-row max-lg:flex-row  md:flex-col  max-md:flex-col sm:flex-col max-sm:flex-col w-full justify-center space-x-3 self-center overflow-hidden scroll-smooth lg:p-3 max-sm:p-2 sm:gap-4 max-sm:gap-5 "
-          style={{
-            scrollbarWidth: 'none',
-            display: 'flex',
-            justifyContent: 'center',
-           
-            // Allow vertical scrolling but handle horizontal ourselves
-          }}
+           className="relative flex h-[28rem] w-full items-center justify-center overflow-hidden "
         >
           {displayedEvents.map((event, idx) => {
+            const isActive = idx === 1;
+						// Offset in % of container width
+						const offsetX = (idx - 1) * 100; // prev: -100%, center: 0%, next: 100%
+						const zIndex = isActive ? 10 : 1;
             return (
-              <div
-                key={event['Event Title'] + idx}
-                className="cardact box flex   md:flex-col max-md:flex-col max-sm:flex-row  sm:flex-row justify-between rounded-xl lg:p-6 sm:p-4  max-sm:p-2 text-left shadow-lg sm:w-full max-sm:w-full gap-2 max-sm:h-40  "
+              <motion.div
+                key={event['Event Title'] }
+                drag="x"
+								dragConstraints={{ left: 0, right: 0 }}
+								onDragEnd={(e, info) => {
+									if (info.offset.x < -50) goToNext();
+									else if (info.offset.x > 50) goToPrevious();
+								}}
+								animate={{
+									x: `${offsetX}%`,
+									scale: isActive ? 1 : 0.8,
+									opacity: isActive ? 1 : 0.5,
+									zIndex: zIndex,
+								}}
+								transition={{ duration: 0.5, ease: "easeInOut" }}
+                className=" cardact absolute flex w-[25rem] cursor-pointer lg:flex-col
+                md:flex-col sm:flex-col justify-between rounded-2xl max-sm:flex-row  shadow-lg dark:bg-gray-800 sm:w-[20rem] md:w-[60rem] lg:p-6 sm:p-4  max-sm:p-2 text-left  max-sm:w-full gap-2 max-sm:h-60  "
+                	onClick={() => onExtend(event)}
               >
                 <div className="lg:w-full flex flex-3/5  justify-center items-center">
                   <img
                     src={event['Event_image']}
                     alt=""
-                    className="shadow-black-600 h-auto w-full rounded-xl shadow-lg"
+                    className="shadow-black-600 max-sm:h-40 max-sm:w-full lg:h-60 lg:w-full rounded-xl shadow-lg"
                   />
                 </div>
-                <div className="flex flex-col flex-3/5  justify-center gap-2 lg:w-full">
-                  <h3 className="fontBold text-lg text-gray-900 dark:text-white max-sm:text-xs">
+                <div className="flex flex-col flex-3/5 text-white justify-center gap-2 lg:w-full">
+                  <h3 className="fontBold text-lg max-sm:text-md">
                     {event['Event Title']}
                   </h3>
-                 <p className="text-gray-600 dark:text-gray-300 max-sm:text-xs line-clamp-2 max-sm:line-clamp-1">
+                 <p className=" max-sm:text-md lg:line-clamp-2 md:line-clamp-2 sm:line-clamp-2 max-sm:line-clamp-6">
   {event['desrip']}
 </p>
 
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

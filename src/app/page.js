@@ -16,7 +16,7 @@ export default function Home() {
         {/* <Navigation /> */}
         <Header />
       </div>
- <div className='bgColor'> <div className="max-md:px-10 max-sm:px-10 sm:px-10 md:px-10 lg:px-16 lg:py-8"><About />
+ <div className='bgColor'> <div className="max-md:px-10 py-8 max-sm:px-10 sm:px-10 md:px-10 lg:px-16 lg:py-8"><About />
  
        <WieTunisia />
  </div></div>

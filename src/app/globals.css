@@ -147,3 +147,13 @@ body::before {
     height: 80vw; /* taller dome */
   }
 }
+
+@keyframes shine {
+  0% { opacity: 0.8; transform: scale(1); filter: drop-shadow(0 0 2px #f06988); }
+  50% { opacity: 1; transform: scale(1.02); filter: drop-shadow(0 0 8px rgba(244, 133, 224, 0.934)); }
+  100% { opacity: 0.8; transform: scale(1); filter: drop-shadow(0 0 2px #edb072); }
+}
+
+.star-shine {
+  animation: shine 3s infinite ease-in-out;
+}

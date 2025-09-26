@@ -23,8 +23,17 @@
 .cardact {
   background: linear-gradient(to top, #FF68A4, #FFC2E8);
   box-shadow: -9px 9px 0px 0px rgba(0, 0, 0, 0.15);
-        position: relative;
-  z-index: 0; 
+ 
+}
+.button {
+  background: linear-gradient(to bottom, #FF68A4, #DC0089);
+  box-shadow: -9px 9px 0px 0px rgba(0, 0, 0, 0.15);
+ 
+}
+.button:hover{
+  background: linear-gradient(to bottom, #DC0089, #FF68A4);
+  box-shadow: -9px 5px 0px 0px rgba(0, 0, 0, 0.15);
+ 
 }
 /* 
 .button_join {
@@ -61,8 +70,7 @@
 .card {
   background: linear-gradient(to  bottom, #FF68A4, #FFC2E8);
       box-shadow: -9px 9px 0px 0px rgba(0, 0, 0, 0.15);
-        position: relative;
-  z-index: 0; 
+      
   border: 1px solid #8D4361;
 }
 
@@ -78,3 +86,30 @@
     linear-gradient(#000 0 0);
   mask-composite: exclude;
 } */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* track background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a0aec0; /* gray-400 */
+  border-radius: 9999px; /* fully rounded */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a5568; /* gray-700 on hover */
+}
+
+/* For dark mode */
+.dark ::-webkit-scrollbar-thumb {
+  background: #4b5563; /* gray-600 */
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af; /* gray-400 */
+}

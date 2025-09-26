@@ -11,12 +11,12 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="  py-16">
+      <nav className="  lg:py-16 md:py-8 sm:py-8 sm:px-2 ">
         <div className="flex w-full flex-nowrap max-sm:justify-center  md:justify-center lg:justify-center  ">
   
-          <div className="max-md:hiddden px-40 w-full max-sm:hidden sm:hidden md:block lg:block">
-            <div className="bg-white  border-[#CB618C] border-2  flex flex-row justify-between gap-14 rounded-full p-4 md:gap-5 lg:gap-14 items-center">
-                    <div className="relative h-12 w-20 ">
+          <div className="max-md:hiddden lg:px-40 md:px-20 w-full max-sm:hidden sm:hidden md:block lg:block">
+            <div className="bg-white w-full  border-[#CB618C] border-2  flex flex-row justify-between lg:gap-14 rounded-full max-md:p-4 md:p-2  md:gap-5 items-center">
+                    <div className="relative lg:h-14 lg:w-20 h-12 w-20 ">
               
                   <a to="/">
                     <Image
@@ -31,19 +31,19 @@ export default function Navigation() {
                
               </div>
 
-                    <div className="flex flex-1/2 flex-nowrap max-sm:justify-center  md:justify-center lg:justify-center gap-4 fontheader text-4xl ">
-              <a href="#about" className="md:text-2xl cursor-pointer max-sm:text-sm/6 sm:text-sm">
+                    <div className="flex lg:flex-1/2 flex-nowrap max-sm:justify-center  md:justify-center lg:justify-center lg:gap-4 fontheader lg:text-4xl  items-center md:gap-4">
+              <a href="#about" className="font-color md:text-2xl cursor-pointer md:text-sm md:font-medium">
                 About
               </a>
 
-              <a href="#about" className="md:text-2xl max-sm:text-sm/6 sm:text-sm" aria-current="About">
+              <a href="#about" className="font-color md:text-2xl md:text-sm md:font-medium" aria-current="Domain">
                 Domain
               </a>
           
-              <a href="#activities" className="md:text-2xl max-sm:text-sm/6 sm:text-sm">
+              <a href="#activities" className="font-color md:text-2xl md:text-sm md:font-medium">
                 Activities
               </a>
-              <a className="md:text-2xl max-sm:text-sm/6 sm:text-sm">Team</a>
+              <a className="font-color md:text-2xl md:text-sm md:font-medium">Team</a>
             
         
           
@@ -52,7 +52,7 @@ export default function Navigation() {
           </div>
            <a
                 href="https://www.facebook.com/profile.php?id=100068599066993"
-                className="bg-[#CB618C] flex cursor-pointer text-white flex-row justify-between gap-5 rounded-full p-5 md:mt-0 md:flex-row md:border-0 md:text-sm md:font-medium dark:border-gray-700"
+                className="bg-[#CB618C] cursor-pointer text-white flex items-center p-4 rounded-full lg:p-5   md:text-sm md:font-medium dark:border-gray-700"
                 target="_blank"
               >
                 Contact Us

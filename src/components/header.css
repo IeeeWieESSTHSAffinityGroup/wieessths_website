@@ -93,7 +93,7 @@ width: 100%;
 
 .background {
   position: relative;
-  padding-bottom: 1rem;
+  padding: 1rem;
   z-index: 1; 
   color: #CB618C;
   background-color: rgba(190, 23, 23, 0);
@@ -299,3 +299,5 @@ width: 100%;
 svg:hover {
   fill: red;
 }
+
+

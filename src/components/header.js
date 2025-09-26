@@ -4,9 +4,11 @@
 import Navigation from '@/components/nav';
 
 
-
+import Image from 'next/image';
 
 import './header.css';
+import star from '../../public/star.svg';
+import star2 from '../../public/star2.svg';
 
 import { HoverIcon } from '@/components/hovericon';
 
@@ -15,18 +17,50 @@ export default function Header() {
   return (
     
   
-      <div className="background">
+      <div className="background ">
         <Navigation />
-        <header className=" flex flex-row max-lg:flex-wrap-reverse max-md:flex-wrap-reverse max-sm:flex-wrap sm:flex-wrap-reverse md:justify-center lg:flex-nowrap lg:justify-center lg:px-14">
-          <div className=" lg:w-full flex flex-1 max-md:flex-row sm:flex-row sm:justify-start sm:p-2 md:justify-start  lg:flex-col lg:justify-between ">
+        <header className=" flex flex-row max-lg:flex-wrap-reverse max-md:flex-wrap-reverse max-sm:flex-wrap sm:flex-wrap-reverse md:justify-center lg:flex-nowrap lg:justify-center lg:px-14 ">
+          <div className=" lg:w-full max-lg:p-4 flex flex-1 max-md:flex-row sm:flex-row sm:justify-start sm:p-4 md:justify-start  lg:flex-col lg:justify-between ">
             <div className="flex flex-1 flex-col sm:justify-center lg:w-full lg:justify-between gap-2">
               <div className="flex gap-5 sm:item-center  md:flex-1 md:flex-col lg:flex-1 flex-col lg:justify-center">
                 {' '}
                 {/* Title */}
-                <div className=" sm:item-center flex flex-col max-sm:items-center max-sm:justify-end md:justify-center lg:flex-1 lg:justify-center">
-                  <span className=" animated-title z-5  
-                  max-sm:leading-15 font-bold lg:leading-40 max-md:text-center max-sm:mb-4 max-sm:w-full max-sm:text-5xl md:mb-4 md:text-center lg:text-center lg:mb-8 lg:text-9xl">
+                <div className="justify-center sm:item-center flex flex-col max-sm:items-center max-sm:justify-center md:justify-center lg:flex-1 lg:justify-center ">
+                  <span className="flex flex-row animated-title z-5  item-startn justify-start 
+                  max-sm:leading-12  sm:leading-18  font-bold 
+                  max-md:leading-10 max-lg:leading-40 max-md:text-center max-sm:mb-4 max-sm:w-full max-sm:text-3xl max-md:text-8xl md:text-7xl sm:text-5xl md:mb-4 md:text-center lg:text-center lg:mb-8 
+                  lg:text-9xl max-lg:text-8xl 
+                  lg:leading-35 md:leading-23 max-md:px-20  sm:px-10 md:px-10 lg:px-10 max-lg:px-40  ">
+                        <div className="relative lg:h-auto lg:w-50 ms:w-30  sm:w-20 max-sm:w-15  items-start">
+                                
+                                    <a to="/">
+                                      <Image
+                                        loading="lazy"
+                                        src={star}
+                                         className="star-shine"
+                                        alt="IEEE ESSTHS"
+                                        layout=""
+                                        objectFit="contain"
+                                      />
+                                    </a>
+                                 
+                                </div>
                     <p className='fontheader font-color'>IEEE WIE ESSTHS AFFINITY GROUP</p>
+                     <div className="relative lg:h-auto lg:w-50 ms:w-30  sm:w-20 max-sm:w-15  items-start">
+                                
+                                    <a to="/">
+                                      <Image
+                                        loading="lazy"
+                                        src={star2}
+                                         className="star-shine"
+                                        alt="IEEE ESSTHS"
+                                        layout=""
+                                        objectFit="contain"
+
+                                      />
+                                    </a>
+                                 
+                                </div>
                   </span>
                  {/* Solang +join us */}
                   <div className="flex max-sm:flex-col-reverse max-sm:items-center max-sm:justify-center sm:flex-col-reverse lg:justify-between">
@@ -40,13 +74,13 @@ export default function Header() {
                 <div className="flex gap-2  lg:flex-row lg:justify-center lg:items-center flex-row md:justify-center  max-md:flex-col 
                 
         
-                max-md:justify-center max-sm:flex-1/7 max-sm:items-center    sm:flex-col sm:justify-start ">
+                max-md:justify-center max-sm:flex-1/7 max-sm:items-center    sm:flex-col sm:justify-center ">
                 
 
                   <div className="relative flex flex-col items-center justify-center     ">
                     {' '}
                     <HoverIcon
-                      objectfit="lg:p-2 md:p-4 max-sm:p-2 sm:p-3"
+                      objectfit="lg:p-2 md:p-4 max-sm:p-2 sm:p-2"
                       className="flex cursor-pointer items-center justify-center rounded-full border-1 border-[#CA608A] hover:bg-[#CA608A] max-sm:p-5 sm:p-5 md:p-9 lg:p-7"
                       href="https://www.facebook.com/profile.php?id=100068599066993"
                       src="Facebook.svg"
@@ -58,7 +92,7 @@ export default function Header() {
                   <div className="relative flex flex-col items-center justify-center    ">
                     {' '}
                     <HoverIcon
-                      objectfit="lg:p-2 md:p-4 max-sm:p-2 sm:p-3"
+                      objectfit="lg:p-2 md:p-4 max-sm:p-2 sm:p-2"
                       className="flex cursor-pointer items-center justify-center rounded-full  border-1 border-[#CA608A] hover:bg-[#CA608A] max-sm:p-5 sm:p-5 md:p-9 lg:p-7"
                       href="https://www.instagram.com/ieee.aess.essths/"
                       src="Instagram.svg"
