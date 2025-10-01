@@ -4,7 +4,15 @@ import ExCom from '@/components/excom';
 import WieTunisia from '@/components/wieTunisia'
 import Values from '@/components/values';
 import UpEvents from '@/components/activities';
-import { upevents } from '../data/events';
+import Upcoming from '@/components/upcomingEvents';
+import Awards from '@/components/awards';
+
+
+import { upevents  } from '../data/events';
+import { events } from '../data/upcomingevents';
+import { awards } from '../data/awards';
+
+
 
 import ContactPage from '@/components/location';
 import Footer from '@/components/footer';
@@ -26,10 +34,11 @@ export default function Home() {
           
         
           
-      
+      <Upcoming events={events}/>
           <Values />
           <UpEvents chapter={upevents} />
           <ExCom />
+          <Awards awards={awards}/>
           <ContactPage />
         </main>
       </div>

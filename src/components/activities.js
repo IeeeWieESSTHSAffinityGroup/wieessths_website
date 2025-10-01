@@ -2,6 +2,8 @@
 import React, { useEffect, Suspense, useRef, useState, useCallback } from 'react';
 import { motion } from "framer-motion";
 import './values.css';
+import Image from 'next/image';
+
 
 export default function UpEvents({ chapter }) {
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -50,14 +52,29 @@ export default function UpEvents({ chapter }) {
 						<div className="flex flex-col items-center gap-2">
 							{/* Image */}
 							{selectedEvent["Event_pdp"] && (
-								<img
+							
+									  <div className="relative lg:h-70 lg:w-180 sm:max-md:h-60 sm:max-md:w-150 max-sm:h-50 max-sm:w-110 md:max-lg:w-180 md:max-lg:h-60">
+											  
+												  <a to="/">
+													<Image
+													  loading="lazy"
+													  src={selectedEvent["Event_pdp"]}
+													  className=" "
+													  alt="event"
+													  layout="fill"
+													  objectFit="cover"
+													/>
+												  </a>
+											   
+											  </div>
+											  
+							)}
+	{/* <img
 									src={selectedEvent["Event_pdp"]}
 									alt=""
 									className="max-h-[20rem] w-full rounded-md object-cover sm:max-h-[20rem]"
 									loading="lazy"
-								/>
-							)}
-
+								/> */}
 							{/* Title */}
 							<h2 className="text-center text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
 								{selectedEvent["Event Title"]}
@@ -160,10 +177,10 @@ const Actvities = ({ loopedEvents, onExtend  }) => {
 	];
   return (
     <section id="activities">
-    <div className="flex w-full flex-col items-center lg:py-10  lg:gap-10 max-sm:p-0  max-sm:gap-5 ">
+    <div className="flex w-full flex-col items-center lg:py-10  lg:gap-10 max-sm:py-0  max-sm:gap-0 ">
      <div className="flex flex-col content-center items-center gap-2 max-sm:p-0  lg:px-14">
           <h2 className="fontheader  font-color lg:mb-7 sm:mb-0 max-sm:mb-0 text-right lg:text-6xl md:text-4xl sm:text-5xl   max-sm:text-2xl max-sm:font-bold">Latest Activities</h2>
-       <p className='text-black'>Fields Taht We tackle within our activities</p>
+       {/* <p className='text-black'>Fields Taht We tackle within our activities</p> */}
         </div>
    
       <div className=" relative flex lg:flex-row  md:flex-row w-full justify-center self-center overflow-hidden sm:flex-col sm:w-full max-sm:w-full ">
@@ -192,7 +209,7 @@ const Actvities = ({ loopedEvents, onExtend  }) => {
         {/* Right Arrow - visible on mobile/tablet */}
         <button
           onClick={goToNext}
-          className="absolute top-1/2 right-2 z-20 -translate-y-1/2 transform cursor-pointer rounded-full bg-white/80 p-2 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800"
+          className="absolute top-1/3 right-2 z-20 -translate-y-1/2 transform cursor-pointer rounded-full bg-white/80 p-2 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800"
           aria-label="Next event"
         >
           <svg
@@ -206,7 +223,7 @@ const Actvities = ({ loopedEvents, onExtend  }) => {
         </button>
         </div>
         <div
-           className="relative flex h-[28rem] w-full items-center justify-center overflow-hidden "
+           className="relative flex max-sm:h-[20rem] sm:max-md:h-[20rem] md:max-lg:h-[28rem] lg:h-[30rem] w-full items-center justify-center overflow-hidden "
         >
           {displayedEvents.map((event, idx) => {
             const isActive = idx === 1;
@@ -230,21 +247,30 @@ const Actvities = ({ loopedEvents, onExtend  }) => {
 								}}
 								transition={{ duration: 0.5, ease: "easeInOut" }}
                 className=" cardact absolute flex w-[25rem] cursor-pointer lg:flex-col
-                md:flex-col sm:flex-col justify-between rounded-2xl max-sm:flex-row  shadow-lg dark:bg-gray-800 sm:w-[20rem] md:w-[60rem] lg:p-6 sm:p-4  max-sm:p-2 text-left  max-sm:w-full gap-2 max-sm:h-60  "
+                md:flex-col sm:flex-col justify-between rounded-2xl max-sm:flex-row  shadow-lg dark:bg-gray-800  lg:p-6 sm:p-4  max-sm:p-2 text-left  max-sm:w-full gap-2 sm:max-md:h-[90%] md:max-lg:h-full lg:h-[90%] max-sm:h-50  "
                 	onClick={() => onExtend(event)}
               >
-                <div className="lg:w-full flex flex-3/5  justify-center items-center">
-                  <img
-                    src={event['Event_image']}
-                    alt=""
-                    className="shadow-black-600 max-sm:h-40 max-sm:w-full lg:h-60 lg:w-full rounded-xl shadow-lg"
-                  />
-                </div>
+                
+                <div className="relative lg:h-110 h-100 w-90 md:max-xl:w-90 sm:max-md:h-50  max-sm:h-45  md:max-lg:h-110 rounded rounded-lg">
+											  
+												  <a to="/">
+													<Image
+													  loading="lazy"
+													 src={event['Event_image']}
+													  className=" "
+													  alt="event"
+													  layout="fill"
+													  objectFit="cover"
+													/>
+												  </a>
+											   
+											  </div>
+				
                 <div className="flex flex-col flex-3/5 text-white justify-center gap-2 lg:w-full">
                   <h3 className="fontBold text-lg max-sm:text-md">
                     {event['Event Title']}
                   </h3>
-                 <p className=" max-sm:text-md lg:line-clamp-2 md:line-clamp-2 sm:line-clamp-2 max-sm:line-clamp-6">
+                 <p className=" max-sm:text-sm lg:line-clamp-2 md:line-clamp-2 sm:line-clamp-2 max-sm:line-clamp-6">
   {event['desrip']}
 </p>
 

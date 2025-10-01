@@ -1,57 +1,69 @@
+'use client';
 import './exCome.css';
+import { HoverIcon } from '@/components/hovericon';
+import { useState } from "react";
 
 export default function ExCom() {
+  
+      const [hoveredIndex, setHoveredIndex] = useState(null); // track hovered card
+
   return (
     <div className="mx-auto flex w-full flex-1 flex-col items-center md:justify-center gap-10 md:px-10 lg:px-12">
       <div className="flex flex-col content-center items-center gap-2 max-sm:p-0 sm:p-0 lg:px-14">
           <h2 className="fontheader  font-color lg:mb-7 text-right lg:text-6xl md:text-4xl sm:text-5xl   max-sm:text-2xl max-sm:font-bold">Team</h2>
-       <p className='text-black'>Fields Taht We tackle within our activities</p>
+       
         </div>
       <div className="grid w-full max-lg:grid-cols-4 max-md:grid-cols-1 max-sm:grid-cols-6 max-sm:gap-4 sm:grid-cols-9 sm:gap-4 md:grid-cols-4 md:gap-4 lg:grid-cols-4 lg:gap-10
       max-md:bg-blue
        gap-6
       ">
-        {teamData
-          ?.filter((s) => !!s?.active)
-          ?.map((speaker) => (
-         
-            <div className='cardex items-left  flex justify-start rounded-2xl  md:col-span-2 max-md:col-span-4 
-            lg:col-span-1 max-lg:col-span-1
-            sm:col-span-4
-            max-sm:col-span-6
-            md:h-40
-            max-sm:h-40
-            w-full
-            text-white
-lg:h-90
-gap-4
-            max-sm:gap-4  
-            ' key={speaker.name}>
-            <div
-              
-              className="rounded-xl border-2 border-none w-full h-full flex flex-row justify-start max-md:items-center
-              max-md:bg-right lg:bg-bottom
-              "
-              style={{
+    {teamData
+  ?.filter((s) => !!s?.active)
+  ?.map((speaker, index) => (
+ <div className='cardex items-left flex justify-start rounded-2xl md:col-span-2 max-md:col-span-4 lg:col-span-1 max-lg:col-span-1 sm:col-span-4 max-sm:col-span-6 md:h-40 max-sm:h-40 w-full text-white lg:h-90 gap-4 max-sm:gap-4 ' key={speaker.name} onMouseEnter={() => setHoveredIndex(index)} onMouseLeave={() => setHoveredIndex(null)}>
+     <div className="rounded-xl border-2 border-none w-full h-full flex flex-row justify-start max-md:items-center max-md:bg-right lg:bg-bottom max-lg:bg-right "  style={{
                 backgroundImage: `url(${speaker.imageSmall.url})`,
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
               
                 aspectRatio:"2"
-              }}
-            >
-              <div className=" text-left max-sm:p-4 sm:gap-4 sm:p-4">
-                <div className="fontheader text-wrap md:text-xl">{speaker.name}</div>
+              }} >
+      
+        <div className="text-left max-sm:p-4 sm:gap-4 sm:p-4">
+          <div className="fontheader text-wrap md:text-xl">{speaker.name}</div>
+          <div className="text-sm">
+            {speaker.title}
+          </div>
 
-                <div className="text-sm">
-                  {speaker.title}
-                  {false && `, ${speaker.company.name}`}
-                </div>
-              </div>
+          <div
+            className={`x transition-all duration-500 
+              ${hoveredIndex === index ? "opacity-100 scale-100" : "opacity-0 scale-75"}`}
+          >
+            <div className="relative flex lg:flex-col max-md:flex-col sm:flex-row max-sm:flex-row items-start lg:justify-center gap-1">
+              <HoverIcon
+                objectfit="lg:p-2 md:p-4 max-sm:p-2 sm:p-2"
+                className="flex cursor-pointer items-center justify-center rounded-full  hover:bg-[#CA608A] max-sm:p-5 sm:p-5 md:p-9 lg:p-5"
+                href="https://www.facebook.com/profile.php?id=100068599066993"
+                src="Facebook_hover.svg"
+                hoverSrc="Facebook_hover.svg"
+                alt="Facebook"
+              />
+              <HoverIcon
+                objectfit="lg:p-2 md:p-4 max-sm:p-2 sm:p-2"
+                className="flex cursor-pointer items-center justify-center rounded-full  hover:bg-[#CA608A] max-sm:p-5 sm:p-5 md:p-9 lg:p-5"
+                href={speaker.company.email}
+                src="email.svg"
+                hoverSrc="email.svg"
+                alt="Instagram"
+              />
             </div>
-            </div>
-            // </Link>
-          ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  ))
+}
+
       </div>
     </div>
   );
@@ -71,6 +83,7 @@ export const teamData = [
     },
     slug: 'rauchg',
     twitterUsername: 'rauchg',
+    email:'salmaghedamsi19@ieee.org',
     company: {
       name: 'Vercel',
     },
@@ -117,6 +130,7 @@ export const teamData = [
     },
     slug: 'rauchg',
     twitterUsername: 'rauchg',
+      email:'salmaghedamsi19@ieee.org',
     company: {
       name: 'Vercel',
     },
@@ -140,6 +154,7 @@ export const teamData = [
     },
     slug: 'rauchg',
     twitterUsername: 'rauchg',
+      email:'guizanimohamed@ieee.org',
     company: {
       name: 'Vercel',
     },
@@ -163,6 +178,8 @@ export const teamData = [
     },
     slug: 'rauchg',
     twitterUsername: 'rauchg',
+      email:'ghassen.mekki@ieee.org',
+
     company: {
       name: 'Vercel',
     },

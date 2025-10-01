@@ -11,10 +11,10 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="  lg:py-16 md:py-8 sm:py-8 sm:px-2 ">
+      <nav className="  lg:py-16 md:py-8 sm:py-8  ">
         <div className="flex w-full flex-nowrap max-sm:justify-center  md:justify-center lg:justify-center  ">
   
-          <div className="max-md:hiddden lg:px-40 md:px-20 w-full max-sm:hidden sm:hidden md:block lg:block">
+          <div className="max-md:hiddden px-10  w-full max-sm:hidden sm:hidden md:block lg:block">
             <div className="bg-white w-full  border-[#CB618C] border-2  flex flex-row justify-between lg:gap-14 rounded-full max-md:p-4 md:p-2  md:gap-5 items-center">
                     <div className="relative lg:h-14 lg:w-20 h-12 w-20 ">
               
@@ -32,18 +32,18 @@ export default function Navigation() {
               </div>
 
                     <div className="flex lg:flex-1/2 flex-nowrap max-sm:justify-center  md:justify-center lg:justify-center lg:gap-4 fontheader lg:text-4xl  items-center md:gap-4">
-              <a href="#about" className="font-color md:text-2xl cursor-pointer md:text-sm md:font-medium">
+              <a href="#about" className="font-color md:text-xl cursor-pointer  font-semibold md:font-medium">
                 About
               </a>
 
-              <a href="#about" className="font-color md:text-2xl md:text-sm md:font-medium" aria-current="Domain">
+              <a href="#about" className="font-color md:text-xl  font-semibold md:font-medium" aria-current="Domain">
                 Domain
               </a>
           
-              <a href="#activities" className="font-color md:text-2xl md:text-sm md:font-medium">
+              <a href="#activities" className="font-color md:text-xl  font-semibold md:font-medium">
                 Activities
               </a>
-              <a className="font-color md:text-2xl md:text-sm md:font-medium">Team</a>
+              <a className="font-color md:text-xl font-semibold  md:font-medium">Team</a>
             
         
           
@@ -134,9 +134,9 @@ export default function Navigation() {
       </nav>
 
       {isMenuOpen && (
-        <div className="lg:hidden">
+        <div className="md:mx-lg:hidden lg:hidden md:hidden">
           <div
-            className="bg-white font-color font-bold text-3xl border-[#763851] border-2 rounded-2xl fixed top-0 z-10 flex h-full w-full flex-col justify-center gap-14 p-4 backdrop-blur-xl max-sm:items-center max-sm:justify-center"
+            className="bg-white font-color font-bold text-3xl border-[#763851] border-2 rounded-2xl fixed left-0 top-0 z-50 flex h-full w-full flex-col justify-center gap-14 p-4 backdrop-blur-xl sm:items-center sm:justify-center max-sm:items-center max-sm:justify-center "
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
            

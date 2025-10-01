@@ -5,6 +5,8 @@ import Image from 'next/image';
 import location from '../../public/Location.png';
 import email from '../../public/email.png';
 import phone from '../../public/Phone.png';
+import instagram from '../../public/Instagram.png';
+
 import logo from '../../public/logo.png';
 
 export default function Footer() {
@@ -48,7 +50,7 @@ export default function Footer() {
                   {' '}
                   <HoverIcon
                     objectfit="lg:p-2 md:p-2 max-sm:p-2 sm:p-1"
-                    className="flex cursor-pointer items-center justify-center rounded-full border-1 border-[#CA608A] p-5 hover:bg-[#CA608A]"
+                    className="flex cursor-pointer items-center justify-center rounded-full border-2 border-[#CA608A] p-5 hover:bg-[#CA608A]"
                     href="https://www.facebook.com/profile.php?id=100068599066993"
                     src="Facebook.svg"
                     hoverSrc="Facebook_hover.svg"
@@ -60,8 +62,8 @@ export default function Footer() {
                   {' '}
                   <HoverIcon
                     objectfit="lg:p-2 md:p-2 max-sm:p-2 sm:p-1"
-                    className="flex cursor-pointer items-center justify-center rounded-full border-1 border-[#CA608A] p-5 hover:bg-[#CA608A]"
-                    href="https://www.instagram.com/ieee.aess.essths/"
+                    className="flex cursor-pointer items-center justify-center rounded-full border-2 border-[#CA608A] p-5 hover:bg-[#CA608A]"
+                    href="https://www.instagram.com/ieee_wie_essths/"
                     src="Instagram.svg"
                     hoverSrc="Instagram_hover.svg"
                     alt="Instagram"
