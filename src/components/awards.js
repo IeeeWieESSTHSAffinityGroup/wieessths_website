@@ -37,7 +37,7 @@ export default function Awards({ awards }) {
     {/* Logo Section */}
     <div className="flex justify-center items-center ">
       <div className="relative lg:h-14 lg:w-20 h-12 w-20 ">
-        <a href="/">
+        
           <Image
             loading="lazy"
             src={`${value.content}`}
@@ -46,7 +46,7 @@ export default function Awards({ awards }) {
             layout="fill"
             objectFit="contain"
           />
-        </a>
+       
       </div>
     </div>
 
