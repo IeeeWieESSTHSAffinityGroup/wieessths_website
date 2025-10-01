@@ -32,12 +32,13 @@ export default function Home() {
         <main className="item-center flex w-full flex-col content-center justify-center lg:gap-20 md:gap-15 sm:gap-10 max-sm:gap-5">
        
           
-        
+            <ExCom />
           
-      <Upcoming events={events}/>
+      
           <Values />
+          <Upcoming events={events}/>
           <UpEvents chapter={upevents} />
-          <ExCom />
+      
           <Awards awards={awards}/>
           <ContactPage />
         </main>
